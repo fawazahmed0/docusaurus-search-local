@@ -185,7 +185,6 @@ export default function SearchBar({
     });
   }, [location.search, location.pathname]);
 
-  loadIndex();
   const onInputFocus = useCallback(() => {
     focusAfterIndexLoaded.current = true;
     loadIndex();
