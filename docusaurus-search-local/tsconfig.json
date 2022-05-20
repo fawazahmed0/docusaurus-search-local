@@ -6,7 +6,7 @@
     "importHelpers": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "outDir": "dist",
+    "outDir": "../dist",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": false,
