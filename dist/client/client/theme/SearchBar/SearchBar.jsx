@@ -146,6 +146,7 @@ export default function SearchBar({ handleSearchBarToggle, }) {
             mark.mark(keywords);
         });
     }, [location.search, location.pathname]);
+    loadIndex();
     const onInputFocus = useCallback(() => {
         focusAfterIndexLoaded.current = true;
         loadIndex();
