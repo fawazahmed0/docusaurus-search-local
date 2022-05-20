@@ -6,6 +6,7 @@ import { buildIndex } from "./buildIndex";
 import { debugInfo } from "./debug";
 import { processDocInfos } from "./processDocInfos";
 import { scanDocuments } from "./scanDocuments";
+import { getIndexHash } from "./getIndexHash";
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -25,9 +26,9 @@ export function postBuildFactory(config: ProcessedPluginOptions) {
     const searchIndex = buildIndex(allDocuments, config);
 
     debugInfo("writing index to disk");
-
+    const indexHash = getIndexHash(config);
     await writeFileAsync(
-      path.join(buildData.outDir, "search-index.json"),
+      path.join(buildData.outDir, `search-index-${indexHash}.json`),
       JSON.stringify(searchIndex),
       { encoding: "utf8" }
     );

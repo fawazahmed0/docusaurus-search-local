@@ -30,7 +30,7 @@ describe("fetchIndexes", () => {
       json: () => Promise.resolve([]),
     });
     const result = await fetchIndexes(baseUrl);
-    expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
+    expect(mockFetch).toBeCalledWith("/search-index-abc.json");
     expect(result).toEqual({
       wrappedIndexes: [],
       zhDictionary: [],
@@ -59,7 +59,7 @@ describe("fetchIndexes", () => {
         ]),
     });
     const result = await fetchIndexes(baseUrl);
-    expect(mockFetch).toBeCalledWith("/search-index.json?_=abc");
+    expect(mockFetch).toBeCalledWith("/search-index-abc.json");
     expect(result).toEqual({
       wrappedIndexes: [
         {

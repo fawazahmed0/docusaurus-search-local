@@ -18,9 +18,10 @@ export async function fetchIndexes(baseUrl: string): Promise<{
   zhDictionary: string[];
 }> {
   if (process.env.NODE_ENV === "production") {
-    const json = (await (
-      await fetch(`${baseUrl}search-index.json?_=${indexHash}`)
-    ).json()) as SerializedIndex[];
+    let response = await fetch(`https://rawcdn.githack.com/fawazahmed0/quran-hadith-search/gh-pages/search-index-${indexHash}.json`)
+    if(!response.ok)
+    response = await fetch(`${baseUrl}search-index-${indexHash}.json`)
+    const json = (await response.json()) as SerializedIndex[];
 
     const wrappedIndexes: WrappedIndex[] = json.map(
       ({ documents, index }, type) => ({
